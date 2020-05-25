@@ -10,16 +10,16 @@ import android.widget.ImageButton;
 
 public class Registro extends AppCompatActivity {
 
-    Button btnRegresar;
-    ImageButton btnServicio, btnCliente;
+                Button btnRegresar;
+        ImageButton btnServicio, btnCliente;
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_registro);
 
-        btnRegresar = (Button)findViewById(R.id.btn_regresar);
+            btnRegresar = (Button)findViewById(R.id.btn_regresar);
         btnServicio = (ImageButton)findViewById(R.id.imBu_servicio);
         btnCliente = (ImageButton)findViewById(R.id.imBu_cliente);
 
