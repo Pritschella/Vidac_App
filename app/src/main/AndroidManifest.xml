@@ -12,9 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".PaginaPrincipal"></activity>
-        <activity android:name=".RegistroServicio" />
-        <activity android:name=".RegistroCliente" />
-        <activity android:name=".Registro" />
+        <activity android:name=".RegistroServicio"></activity>
+        <activity android:name=".RegistroCliente"></activity>
+        <activity android:name=".Registro"></activity>
+        <activity android:name=".inicio_sesion"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".inicio_sesion" />
+
     </application>
 
 </manifest>
