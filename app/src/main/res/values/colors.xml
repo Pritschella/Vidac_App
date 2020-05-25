@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="naranja">#9BFFC107</color>
+    <color name="inicioSesion">#4100BCD4</color>
+    <color name="registro">#1B9C27B0</color>
+    <color name="regresar">#6995F436</color>
+</resources>

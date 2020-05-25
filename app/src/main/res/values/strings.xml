@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">VIDAC</string>
+
+    <string name="txt_bienvenida">¡Bienvenid@ a VIDAC!</string>
+    <string name="txt_pregunta">¿Qué desea hacer?</string>
+    <string name="txt_inicioSesion">Inicio de sesión</string>
+    <string name="txt_registro">Registro</string>
+
+    <string name="btn_salir">SALIR</string>
+
+    <string name="txt_login">INICIAR SESIÓN</string>
+    <string name="txt_correo">Correo electrónico: </string>
+    <string name="editText_correo">Correo</string>
+    <string name="txt_contraseña">Contraseña: </string>
+    <string name="editText_contraseña">Contraseña</string>
+    <string name="btn_ingresar">INGRESAR</string>
+
+    <string name="txt_tituloRegistro">REGISTRO</string>
+    <string name="txt_preguntaRegistro">¿Cómo se desea registrar?</string>
+    <string name="txt_ser">Servicio</string>
+    <string name="txt_cliente">Cliente</string>
+    <string name="btn_regresar">REGRESAR</string>
+
+    <string name="txt_registroCliente">Registro de Cliente</string>
+
+    <string name="txt_registroServicio">Registro de Servicio</string>
+
+
+</resources>
