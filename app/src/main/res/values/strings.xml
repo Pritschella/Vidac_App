@@ -25,5 +25,16 @@
 
     <string name="txt_registroServicio">Registro de Servicio</string>
 
+    <string name="Nombres">Nombre(s)</string>
+    <string name="Apellidos">Apellidos</string>
+    <string name="Edad">Edad</string>
+    <string name="Telefono">Telefono</string>
+    <string name="Correo">Correo</string>
+    <string name="Contraseña">Contraseña</string>
+    <string name="Genero">Genero</string>
+    <string name="Parentezco">Parentezco</string>
+    <string name="Registrar">Registrar</string>
+
+
 
 </resources>
