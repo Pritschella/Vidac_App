@@ -30,7 +30,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView7"
@@ -47,7 +47,7 @@
                     tools:layout_editor_absoluteY="49dp" />
 
                 <Button
-                    android:id="@+id/btnBuscar"
+                    android:id="@+id/btnBuscarSer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
@@ -105,6 +105,17 @@
                     android:inputType="number" />
 
                 <EditText
+                    android:id="@+id/Direccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="0dp"
+                    android:ems="10"
+                    android:hint="@string/Direccion"
+                    android:inputType="textPersonName" />
+
+                <EditText
                     android:id="@+id/Correo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -116,7 +127,7 @@
                     android:inputType="textPersonName" />
 
                 <EditText
-                    android:id="@+id/Password"
+                    android:id="@+id/Pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
@@ -151,6 +162,7 @@
                     android:id="@+id/btnRegistrar"
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="15dp"
                     android:text="@string/Registrar" />
 
