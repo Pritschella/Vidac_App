@@ -3,6 +3,7 @@ package com.example.appvidac;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -16,17 +17,20 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.StringReader;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -37,9 +41,10 @@ public class RegistroCliente extends AppCompatActivity implements View.OnClickLi
     private Bitmap bitmap;
 
     private int PICK_IMAGE_REQUEST = 1;
+    Context context;
 
-    private String UPLOAD_URL ="https://192.168.1.95/Vidac/SubirFoto.php";
-    private String RegisterClientURL ="https://192.168.1.95/Vidac/RegistrarCliente.php";
+    private String UPLOAD_URL ="http://192.168.1.95/Vidac/SubirFoto.php";
+    private String RegisterClientURL ="http://192.168.1.95/Vidac/RegistrarCliente.php";
     private String KEY_IMAGEN = "Foto";
     private String KEY_NOMBRE = "Nombre";
     private String KEY_APELLIDO = "Apellidos";
@@ -47,7 +52,7 @@ public class RegistroCliente extends AppCompatActivity implements View.OnClickLi
     private String KEY_TELEFONO = "Telefono";
     private String KEY_DIRECCION = "Direccion";
     private String KEY_CORREO = "Correo";
-    private String KEY_CONTRASEÑA = "Pass";
+    private String KEY_PASS = "Pass";
     private String KEY_GENERO = "Genero";
     private String KEY_PARENTESCO = "Parentesco";
     @Override
@@ -81,22 +86,38 @@ public class RegistroCliente extends AppCompatActivity implements View.OnClickLi
         return encodedImage;
     }
 
-    public void uploadImage(){
-        final ProgressDialog loading= ProgressDialog.show(this, "Subiendo..", "Espere por favor...", false, false);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, UPLOAD_URL, new Response.Listener<String>() {
-
-            @Override
+    public void uploadImage(String URL){
+        final ProgressDialog loading = ProgressDialog.show(this,"Subiendo...","Espere por favor...",false,false);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
+                new Response.Listener<String>() {
+                @Override
             public void onResponse(String s) {
-                loading.dismiss();
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
-
+                    //Descartar el diálogo de progreso
+                    loading.dismiss();
+                    //Mostrando el mensaje de la respuesta
+                    Toast.makeText(getApplicationContext(), s , Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 loading.dismiss();
+                String message = null;
+                if (volleyError instanceof NetworkError) {
+                    message = "Cannot connect to Internet...Please check your connection!";
+                } else if (volleyError instanceof ServerError) {
+                    message = "The server could not be found. Please try again after some time!!";
+                } else if (volleyError instanceof AuthFailureError) {
+                    message = "Cannot connect to Internet...Please check your connection!";
+                } else if (volleyError instanceof ParseError) {
+                    message = "Parsing error! Please try again after some time!!";
+                } else if (volleyError instanceof NoConnectionError) {
+                    message = "Cannot connect to Internet...Please check your connection!";
+                } else if (volleyError instanceof TimeoutError) {
+                    message = "Connection TimeOut! Please check your internet connection.";
+                }
+                Toast.makeText(RegistroCliente.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), volleyError.getMessage(), Toast.LENGTH_LONG).show();
 
-                Toast.makeText(getApplicationContext(), volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
             }
         }){
             @Override
@@ -113,6 +134,7 @@ public class RegistroCliente extends AppCompatActivity implements View.OnClickLi
                 return params;
             }
         };
+
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -144,8 +166,8 @@ public class RegistroCliente extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    public void RegistrarCliente(){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, RegisterClientURL, new Response.Listener<String>() {
+    public void RegistrarCliente(String URL){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String s) {
@@ -155,7 +177,7 @@ public class RegistroCliente extends AppCompatActivity implements View.OnClickLi
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Toast.makeText(getApplicationContext(), volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), volleyError.getMessage(), Toast.LENGTH_LONG).show();
             }
         }){
             @Override
@@ -163,8 +185,8 @@ public class RegistroCliente extends AppCompatActivity implements View.OnClickLi
 
                 String nombre = Nombre.getText().toString();
                 String apellidos = Apellidos.getText().toString();
-                int edad = Integer.parseInt(Edad.getText().toString());
-                int telefono = Integer.parseInt(Telefono.getText().toString());
+                String edad = Edad.getText().toString();
+                String telefono = Telefono.getText().toString();
                 String direccion = Direccion.getText().toString();
                 String correo = Correo.getText().toString();
                 String pass = Pass.getText().toString();
@@ -172,15 +194,15 @@ public class RegistroCliente extends AppCompatActivity implements View.OnClickLi
                 String parentesco = Parentesco.getText().toString();
 
 
-                Map<String, String> params = new Hashtable<String, String>();
+                Map<String, String> params = new Hashtable<>();
 
                 params.put(KEY_NOMBRE, nombre);
                 params.put(KEY_APELLIDO, apellidos);
-                params.put(KEY_EDAD, String.valueOf(edad));
-                params.put(KEY_TELEFONO, String.valueOf(telefono));
+                params.put(KEY_EDAD, edad);
+                params.put(KEY_TELEFONO, telefono);
                 params.put(KEY_DIRECCION, direccion);
                 params.put(KEY_CORREO, correo);
-                params.put(KEY_CONTRASEÑA, pass);
+                params.put(KEY_PASS, pass);
                 params.put(KEY_GENERO, genero);
                 params.put(KEY_PARENTESCO, parentesco);
 
@@ -199,7 +221,9 @@ public class RegistroCliente extends AppCompatActivity implements View.OnClickLi
             }
 
             if (v==btnRegistrar){
-                uploadImage();
+                uploadImage("http://192.168.1.95/Vidac/SubirFoto.php");
+                RegistrarCliente("http://192.168.1.95/Vidac/RegistrarCliente.php");
             }
     }
+
 }

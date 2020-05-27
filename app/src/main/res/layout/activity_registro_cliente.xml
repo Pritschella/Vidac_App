@@ -155,7 +155,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="15dp"
                     android:ems="10"
-                    android:hint="@string/Parentezco"
+                    android:hint="@string/Parentesco"
                     android:inputType="textPersonName" />
 
                 <Button

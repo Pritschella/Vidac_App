@@ -63,7 +63,7 @@ public class inicio_sesion extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parametros = new HashMap<String, String>();
                 parametros.put("Correo", correo.getText().toString());
-                parametros.put("Contraseña", contrasenia.getText().toString());
+                parametros.put("Pass", contrasenia.getText().toString());
                 return parametros;
             }
         };
