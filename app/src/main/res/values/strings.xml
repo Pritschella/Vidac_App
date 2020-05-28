@@ -38,6 +38,19 @@
     <string name="Direccion">Direccion</string>
     <string name="Descripcion">Descripcion</string>
 
+    <string-array name="Genero">
+        <item>Seleccione el genero...</item>
+        <item>Hombre</item>
+        <item>Mujer</item>
+    </string-array>
+
+    <string-array name="Tipo">
+        <item>Seleccione el tipo de servicio...</item>
+        <item>Doctor</item>
+        <item>Enfermero</item>
+        <item>Barbero</item>
+    </string-array>
+
     <string name="txt_servicios">SERVICIOS</string>
     <string name="txt_doctores">Doctores</string>
     <string name="txt_enfermeros">Enfermeros</string>

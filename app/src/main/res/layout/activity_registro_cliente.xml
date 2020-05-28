@@ -116,6 +116,15 @@
                     android:hint="@string/Direccion"
                     android:inputType="textPersonName" />
 
+                <Spinner
+                    android:id="@+id/Genero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="0dp"
+                    android:entries="@array/Genero" />
+
                 <EditText
                     android:id="@+id/Correo"
                     android:layout_width="match_parent"
@@ -136,18 +145,6 @@
                     android:ems="10"
                     android:hint="@string/Contraseña"
                     android:inputType="textPassword" />
-
-                <EditText
-                    android:id="@+id/Genero"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="0dp"
-                    android:width="5dp"
-                    android:ems="10"
-                    android:hint="@string/Genero"
-                    android:inputType="textPersonName" />
 
                 <EditText
                     android:id="@+id/Parentesco"

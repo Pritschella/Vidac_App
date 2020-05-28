@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -37,7 +38,8 @@ import java.util.Map;
 public class RegistroCliente extends AppCompatActivity implements View.OnClickListener{
     private Button btnBuscar, btnRegistrar;
     private ImageView imageView;
-    private EditText Nombre, Apellidos, Edad, Direccion, Telefono, Genero, Parentesco, Correo, Pass;
+    private EditText Nombre, Apellidos, Edad, Direccion, Telefono, Parentesco, Correo, Pass;
+    private Spinner Genero;
     private Bitmap bitmap;
 
     private int PICK_IMAGE_REQUEST = 1;
@@ -190,9 +192,8 @@ public class RegistroCliente extends AppCompatActivity implements View.OnClickLi
                 String direccion = Direccion.getText().toString();
                 String correo = Correo.getText().toString();
                 String pass = Pass.getText().toString();
-                String genero = Genero.getText().toString();
+                String genero = Genero.getSelectedItem().toString();
                 String parentesco = Parentesco.getText().toString();
-
 
                 Map<String, String> params = new Hashtable<>();
 

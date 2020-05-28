@@ -66,6 +66,15 @@
                     android:layout_marginEnd="0dp"
                     android:layout_weight="1" />
 
+                <Spinner
+                    android:id="@+id/Tipo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="0dp"
+                    android:entries="@array/Tipo" />
+
                 <EditText
                     android:id="@+id/NombresSer"
                     android:layout_width="match_parent"
@@ -121,6 +130,15 @@
                     android:ems="10"
                     android:hint="@string/Horario"
                     android:inputType="textPersonName" />
+
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="0dp"
+                    android:entries="@array/Genero" />
 
                 <EditText
                     android:id="@+id/DescripcionSer"
