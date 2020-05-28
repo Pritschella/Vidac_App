@@ -38,6 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="131dp"
+                    android:background="#67A51EE9"
                     android:text="@string/txt_registroCliente"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"

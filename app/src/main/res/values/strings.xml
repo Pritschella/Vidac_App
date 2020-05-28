@@ -38,6 +38,13 @@
     <string name="Direccion">Direccion</string>
     <string name="Descripcion">Descripcion</string>
 
-
+    <string name="txt_servicios">SERVICIOS</string>
+    <string name="txt_doctores">Doctores</string>
+    <string name="txt_enfermeros">Enfermeros</string>
+    <string name="txt_farmacias">Farmacias</string>
+    <string name="txt_restaurantes">Restaurantes</string>
+    <string name="txt_actividades">Actividades</string>
+    <string name="txt_barberias">Barberías</string>
+    <string name="txt_mensajeros">Mensajeros</string>
 
 </resources>
