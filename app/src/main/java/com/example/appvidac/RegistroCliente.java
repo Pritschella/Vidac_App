@@ -161,12 +161,14 @@ public class RegistroCliente extends AppCompatActivity implements View.OnClickLi
                 //Cómo obtener el mapa de bits de la Galería
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 //Configuración del mapa de bits en ImageView
+
                 imageView.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
 
     public void RegistrarCliente(String URL){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
