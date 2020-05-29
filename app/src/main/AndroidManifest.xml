@@ -3,7 +3,8 @@
     package="com.example.appvidac">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,11 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PaginaPrincipal"></activity>
-        <activity android:name=".RegistroServicio"></activity>
-        <activity android:name=".RegistroCliente"></activity>
-        <activity android:name=".Registro"></activity>
-        <activity android:name=".inicio_sesion"></activity>
+        <activity android:name=".Servicios2Recycler"></activity>
+        <activity android:name=".PaginaPrincipal" />
+        <activity android:name=".RegistroServicio" />
+        <activity android:name=".RegistroCliente" />
+        <activity android:name=".Registro" />
+        <activity android:name=".inicio_sesion" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
