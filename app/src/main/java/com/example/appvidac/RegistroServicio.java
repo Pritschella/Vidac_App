@@ -36,7 +36,7 @@ import java.util.Hashtable;
 import java.util.Map;
 
 public class RegistroServicio extends AppCompatActivity implements View.OnClickListener{
-    private Button btnBuscarf, btnBuscarc, btnRegistrar;
+    private Button btnBuscarf, btnBuscarc, btnRegistrars;
     private ImageView imageViewf, imageViewc;
     private EditText Nombre, Apellidos, Direccion, Telefono, Horario, Descripcion, Correo, Pass;
     private Spinner Genero, Servicio;
@@ -66,7 +66,7 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
 
         btnBuscarf=findViewById(R.id.btnBuscarSer);
         btnBuscarc=findViewById(R.id.btnBuscarSer2);
-        btnRegistrar=findViewById(R.id.btnRegistrarSer);
+        btnRegistrars=findViewById(R.id.btnRegistrarSer);
         imageViewf=findViewById(R.id.imageViewf);
         imageViewc=findViewById(R.id.imageViewCredencial);
 
@@ -82,7 +82,8 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
         Descripcion=findViewById(R.id.DescripcionSer);
 
         btnBuscarf.setOnClickListener(this);
-        btnRegistrar.setOnClickListener(this);
+        btnBuscarc.setOnClickListener(this);
+        btnRegistrars.setOnClickListener(this);
     }
 
     public String getStringImagen(Bitmap bmp){
@@ -132,13 +133,10 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
                 String imagen = getStringImagen(bitmap);
 
                 String nombre = Nombre.getText().toString().trim();
-
                 Map<String, String> params = new Hashtable<String, String>();
 
                 params.put(KEY_IMAGEN, imagen);
                 params.put(KEY_NOMBRE, nombre);
-
-
                 return params;
             }
         };
@@ -156,46 +154,30 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri filePath = data.getData();
             try {
                 //Cómo obtener el mapa de bits de la Galería
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 //Configuración del mapa de bits en ImageView
-                imageViewf.setImageBitmap(bitmap);
+               if (im==1){
+                    Toast.makeText(this, "hola", Toast.LENGTH_LONG).show();
+               imageViewf.setImageBitmap(bitmap);
+                }
+                if(im==2){
+                    imageViewc.setImageBitmap(bitmap);
+                }
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void showFileChooser2(){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Imagen"), PICK_IMAGE_REQUEST);
-    }
 
-    protected void onActivityResult2(int requestCode, int resultCode, Intent data) {
-
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri filePath = data.getData();
-            try {
-                //Cómo obtener el mapa de bits de la Galería
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                //Configuración del mapa de bits en ImageView
-                imageViewc.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
     public void RegistrarServicio(String URL){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
@@ -223,10 +205,7 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
                 String pass = Pass.getText().toString();
                 String genero = Genero.getSelectedItem().toString();
                 String descripcion = Descripcion.getText().toString();
-                String servicio="";
-                if (Servicio.getSelectedItem().toString()=="Doctor")    servicio = "doctores";
-                if (Servicio.getSelectedItem().toString()=="Enfermero") servicio="enfermeros";
-                if (Servicio.getSelectedItem().toString()=="Barbero")   servicio="barbero";
+                String servicio= Servicio.getSelectedItem().toString();
 
                 Map<String, String> params = new Hashtable<>();
 
@@ -240,6 +219,7 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
                 params.put(KEY_GENERO, genero);
                 params.put(KEY_DESCRIPCION, descripcion);
                 params.put(KEY_SERVICIO, servicio);
+                params.put(KEY_DISPONIBLE, "Disponible");
                 return params;
             }
         };
@@ -248,18 +228,24 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
 
         requestQueue.add(stringRequest);
     }
+    int im =0;
     @Override
     public void onClick(View v) {
+
         if(v == btnBuscarf){
+            im=1;
             showFileChooser();
+
         }
 
         if(v == btnBuscarc){
-            showFileChooser2();
+            im=2;
+            showFileChooser();
+            uploadImage("http://192.168.1.95/Vidac/SubirFotoServicio.php");
         }
 
-        if (v==btnRegistrar){
-            uploadImage("http://192.168.1.95/Vidac/SubirFotoServicio.php");
+        if (v==btnRegistrars){
+            //uploadImage("http://192.168.1.95/Vidac/SubirFotoServicio.php");
             uploadImage("http://192.168.1.95/Vidac/SubirCredencialServicio.php");
             RegistrarServicio("http://192.168.1.95/Vidac/RegistrarServicio.php");
         }
