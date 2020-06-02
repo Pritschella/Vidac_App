@@ -8,12 +8,18 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class PaginaPrincipal extends AppCompatActivity {
-    ImageButton doc, act;
+    ImageButton doc, act, enf, barber, mensa, far, resta;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagina_principal);
         doc = findViewById(R.id.imageButton);
+        enf=findViewById(R.id.enf);
+        barber=findViewById(R.id.barber);
+        mensa=findViewById(R.id.mensa);
+        far=findViewById(R.id.farm);
+        resta=findViewById(R.id.resta);
+
         doc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -21,6 +27,7 @@ public class PaginaPrincipal extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         act = findViewById(R.id.imacti);
         act.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,6 +36,46 @@ public class PaginaPrincipal extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        enf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Enfermeros.class);
+                startActivity(intent);
+            }
+        } );
+
+        mensa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Mandaderos.class);
+                startActivity(intent);
+            }
+        } );
+
+        barber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Barberos.class);
+                startActivity(intent);
+            }
+        } );
+
+        far.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Farmacias.class);
+                startActivity(intent);
+            }
+        } );
+
+        resta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Restaurantes.class);
+                startActivity(intent);
+            }
+        } );
     }
 }
 
