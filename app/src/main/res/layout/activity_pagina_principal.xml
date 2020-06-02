@@ -67,7 +67,7 @@
         app:srcCompat="@drawable/restaurantes" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/imacti"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView12"
@@ -147,7 +147,7 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageButton5"
+        android:layout_below="@+id/imacti"
         android:layout_alignParentStart="true"
         android:layout_marginStart="78dp"
         android:layout_marginTop="21dp"

@@ -27,8 +27,5 @@ public class Doctores extends AppCompatActivity {
 
         DoctoresAPI data = new DoctoresAPI(lista, this.getApplicationContext());
         data.execute();
-
-
-
     }
 }

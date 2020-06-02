@@ -39,6 +39,7 @@ public class ServiciosAdapter extends RecyclerView.Adapter<ItemViewHolder> {
         holder.direccion.setText(data.getDireccion());
         holder.descripcion.setText(data.getDescripcion());
         //String url = "http://192.168.0.31/Vidac/fotos_clientes/" + data.getFoto();
+
         if(data.getFoto() != null) {
             String url = data.getFoto().replace("192.168.0.31", "192.168.1.95");
             Log.i("IMAGE", url);

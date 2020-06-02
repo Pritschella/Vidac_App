@@ -22,12 +22,13 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class DoctoresAPI extends AsyncTask<Void, Integer, List<Servicio2>> {
+public class ActividadesAPI extends AsyncTask<Void, Integer, List<Servicio2>> {
     RecyclerView recyclerView;
     Context context;
-    public List<Servicio2> listaDoctores = new ArrayList<>();
 
-    public DoctoresAPI(RecyclerView recyclerView, Context context) {
+    public List<Servicio2> listaActividades = new ArrayList<>();
+
+    public ActividadesAPI(RecyclerView recyclerView, Context context){
         this.recyclerView = recyclerView;
         this.context = context;
     }
@@ -36,28 +37,27 @@ public class DoctoresAPI extends AsyncTask<Void, Integer, List<Servicio2>> {
     protected List<Servicio2> doInBackground(Void... voids) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("http://192.168.1.95/Vidac/Datos_Doctores.php")
+                .url("http://192.168.1.95/Vidac/Datos_Actividades.php")
                 .build();
         try (Response response = client.newCall(request).execute()) {
             String result = response.body().string();
-            JSONObject doctoresData = new JSONObject(result);
-            JSONArray array = doctoresData.getJSONArray("data");
+            JSONObject actividadesData = new JSONObject(result);
+            JSONArray array = actividadesData.getJSONArray("data");
             if (array != null) {
                 JSONParser parser = new JSONParser();
                 for (int i = 0; i < array.length(); i++){
                     JSONObject data = array.getJSONObject(i);
-                    listaDoctores.add(new Servicio2().createFromJSONObject(data));
+                    listaActividades.add(new Servicio2().createFromJSONObject(data));
                 }
-                Log.i("SIZE", String.valueOf(listaDoctores.size()));
+                Log.i("SIZE", String.valueOf(listaActividades.size()));
             }
 
 
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-        return listaDoctores;
+        return listaActividades;
     }
-
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
@@ -68,10 +68,9 @@ public class DoctoresAPI extends AsyncTask<Void, Integer, List<Servicio2>> {
     protected void onPostExecute(List<Servicio2> data) {
         super.onPostExecute(data);
         Log.i("onPostExecute", data.toString());
-        Log.i("SIZE", String.valueOf(this.listaDoctores.size()));
-        ServiciosAdapter adapter = new ServiciosAdapter(this.listaDoctores);
+        Log.i("SIZE", String.valueOf(this.listaActividades.size()));
+        ServiciosAdapter adapter = new ServiciosAdapter(this.listaActividades);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.context));
     }
-
 }

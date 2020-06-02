@@ -35,7 +35,7 @@ public class inicio_sesion extends AppCompatActivity {
         Ingresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iniciarSesion("http://192.168.0.31/Vidac/validar_usuario.php");
+                iniciarSesion("http://192.168.1.95/Vidac/validar_usuario.php");
 
             }
         });

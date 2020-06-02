@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class PaginaPrincipal extends AppCompatActivity {
-    ImageButton doc;
+    ImageButton doc, act;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,5 +21,14 @@ public class PaginaPrincipal extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        act = findViewById(R.id.imacti);
+        act.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Actividades.class);
+                startActivity(intent);
+            }
+        });
     }
 }
+
