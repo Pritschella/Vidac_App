@@ -224,8 +224,8 @@ public class RegistroCliente extends AppCompatActivity implements View.OnClickLi
             }
 
             if (v==btnRegistrar){
-                uploadImage("http://192.168.1.95/Vidac/SubirFoto.php");
-                RegistrarCliente("http://192.168.1.95/Vidac/RegistrarCliente.php");
+                uploadImage("http://192.168.0.31/Vidac/SubirFoto.php");
+                RegistrarCliente("http://192.168.0.31/Vidac/RegistrarCliente.php");
             }
     }
 

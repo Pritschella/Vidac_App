@@ -1,5 +1,9 @@
 package com.example.appvidac;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Servicio2 {
     private int id,telefono, idfoto;
     private String nombre, apellidos, direccion, horario, genero, descripcion, correo, pass, disponibilidad, foto;
@@ -106,5 +110,38 @@ public class Servicio2 {
 
     public void setDisponibilidad(String disponibilidad) {
         this.disponibilidad = disponibilidad;
+    }
+
+    public Servicio2 createFromJSONObject(JSONObject data){
+        try {
+            this.nombre = data.getString("Nombre");
+            this.apellidos = data.getString("Apellidos");
+            this.direccion = data.getString("Direccion");
+            this.telefono = data.getInt("Telefono");
+            this.descripcion = data.getString("Descripcion");
+            this.foto = data.getString("foto_url");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Servicio2{" +
+                "id=" + id +
+                ", telefono=" + telefono +
+                ", idfoto=" + idfoto +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", horario='" + horario + '\'' +
+                ", genero='" + genero + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", correo='" + correo + '\'' +
+                ", pass='" + pass + '\'' +
+                ", disponibilidad='" + disponibilidad + '\'' +
+                ", foto='" + foto + '\'' +
+                '}';
     }
 }

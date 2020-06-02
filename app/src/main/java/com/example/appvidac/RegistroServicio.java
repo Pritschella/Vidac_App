@@ -45,8 +45,8 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
     private int PICK_IMAGE_REQUEST = 1;
     Context context;
 
-    private String UPLOAD_URL ="http://192.168.1.95/Vidac/SubirFotoServicio.php";
-    private String RegisterClientURL ="http://192.168.1.95/Vidac/RegistrarServicio.php";
+    private String UPLOAD_URL ="http://192.168.0.31/Vidac/SubirFotoServicio.php";
+    private String RegisterClientURL ="http://192.168.0.31/Vidac/RegistrarServicio.php";
     private String KEY_IMAGEN = "Foto";
     private String KEY_NOMBRE = "Nombre";
     private String KEY_APELLIDO = "Apellidos";
@@ -241,13 +241,13 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
         if(v == btnBuscarc){
             im=2;
             showFileChooser();
-            uploadImage("http://192.168.1.95/Vidac/SubirFotoServicio.php");
+            uploadImage("http://192.168.0.31/Vidac/SubirFotoServicio.php");
         }
 
         if (v==btnRegistrars){
             //uploadImage("http://192.168.1.95/Vidac/SubirFotoServicio.php");
-            uploadImage("http://192.168.1.95/Vidac/SubirCredencialServicio.php");
-            RegistrarServicio("http://192.168.1.95/Vidac/RegistrarServicio.php");
+            uploadImage("http://192.168.0.31/Vidac/SubirCredencialServicio.php");
+            RegistrarServicio("http://192.168.0.31/Vidac/RegistrarServicio.php");
         }
     }
 }
