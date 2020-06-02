@@ -137,7 +137,7 @@
                     android:layout_marginEnd="0dp"
                     android:ems="10"
                     android:hint="@string/Telefono"
-                    android:inputType="textPersonName" />
+                    android:inputType="number" />
 
                 <EditText
                     android:id="@+id/HorarioSer"

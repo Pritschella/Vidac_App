@@ -70,6 +70,9 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
         imageViewf=findViewById(R.id.imageViewf);
         imageViewc=findViewById(R.id.imageViewCredencial);
 
+        btnBuscarc.setEnabled(false);
+        btnRegistrars.setEnabled(false);
+
         Nombre=findViewById(R.id.NombresSer);
         Apellidos=findViewById(R.id.ApellidosSer);
         Horario=findViewById(R.id.HorarioSer);
@@ -81,9 +84,34 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
         Pass=findViewById(R.id.PassSer);
         Descripcion=findViewById(R.id.DescripcionSer);
 
+        Nombre.setEnabled(false);
+        Apellidos.setEnabled(false);
+        Horario.setEnabled(false);
+        Direccion.setEnabled(false);
+        Telefono.setEnabled(false);
+        Genero.setEnabled(false);
+        Servicio.setEnabled(false);
+        Correo.setEnabled(false);
+        Pass.setEnabled(false);
+        Descripcion.setEnabled(false);
+
         btnBuscarf.setOnClickListener(this);
         btnBuscarc.setOnClickListener(this);
         btnRegistrars.setOnClickListener(this);
+    }
+
+    public void habilitar(){
+        Nombre.setEnabled(true);
+        Apellidos.setEnabled(true);
+        Horario.setEnabled(true);
+        Direccion.setEnabled(true);
+        Telefono.setEnabled(true);
+        Genero.setEnabled(true);
+        Servicio.setEnabled(true);
+        Correo.setEnabled(true);
+        Pass.setEnabled(true);
+        Descripcion.setEnabled(true);
+        btnRegistrars.setEnabled(true);
     }
 
     public String getStringImagen(Bitmap bmp){
@@ -166,9 +194,11 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
                if (im==1){
                     Toast.makeText(this, "hola", Toast.LENGTH_LONG).show();
                imageViewf.setImageBitmap(bitmap);
+               btnBuscarc.setEnabled(true);
                 }
                 if(im==2){
                     imageViewc.setImageBitmap(bitmap);
+                    habilitar();
                 }
 
             } catch (IOException e) {
@@ -199,7 +229,7 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
                 String nombre = Nombre.getText().toString();
                 String apellidos = Apellidos.getText().toString();
                 String horario = Horario.getText().toString();
-                String telefono = Telefono.getText().toString();
+                int telefono = Integer.parseInt(Telefono.getText().toString());
                 String direccion = Direccion.getText().toString();
                 String correo = Correo.getText().toString();
                 String pass = Pass.getText().toString();
@@ -212,7 +242,7 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
                 params.put(KEY_NOMBRE, nombre);
                 params.put(KEY_APELLIDO, apellidos);
                 params.put(KEY_HORARIO, horario);
-                params.put(KEY_TELEFONO, telefono);
+                params.put(KEY_TELEFONO, String.valueOf(telefono));
                 params.put(KEY_DIRECCION, direccion);
                 params.put(KEY_CORREO, correo);
                 params.put(KEY_PASS, pass);
