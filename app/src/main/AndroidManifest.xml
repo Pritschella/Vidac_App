@@ -13,7 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Enfermeros"></activity>
+        <activity android:name=".Restaurantes"></activity>
+        <activity android:name=".Mandaderos" />
+        <activity android:name=".Farmacias" />
+        <activity android:name=".Actividades" />
+        <activity android:name=".Barberos" />
+        <activity android:name=".Enfermeros" />
         <activity android:name=".Doctores" />
         <activity android:name=".PaginaPrincipal" />
         <activity android:name=".RegistroServicio" />
