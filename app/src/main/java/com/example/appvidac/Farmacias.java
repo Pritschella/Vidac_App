@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import API.BarberosAPI;
+import API.FarmaciasAPI;
 
 public class Farmacias extends AppCompatActivity {
     RecyclerView lista;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +18,7 @@ public class Farmacias extends AppCompatActivity {
 
         lista = (RecyclerView)findViewById(R.id.lista);
 
-        BarberosAPI data = new BarberosAPI(lista, this.getApplicationContext());
+        FarmaciasAPI data = new FarmaciasAPI(lista, this.getApplicationContext());
         data.execute();
     }
 }
