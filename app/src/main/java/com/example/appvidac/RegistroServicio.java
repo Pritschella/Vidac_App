@@ -229,7 +229,7 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
                 String nombre = Nombre.getText().toString();
                 String apellidos = Apellidos.getText().toString();
                 String horario = Horario.getText().toString();
-                int telefono = Integer.parseInt(Telefono.getText().toString());
+                String telefono = Telefono.getText().toString();
                 String direccion = Direccion.getText().toString();
                 String correo = Correo.getText().toString();
                 String pass = Pass.getText().toString();
@@ -242,7 +242,7 @@ public class RegistroServicio extends AppCompatActivity implements View.OnClickL
                 params.put(KEY_NOMBRE, nombre);
                 params.put(KEY_APELLIDO, apellidos);
                 params.put(KEY_HORARIO, horario);
-                params.put(KEY_TELEFONO, String.valueOf(telefono));
+                params.put(KEY_TELEFONO, telefono);
                 params.put(KEY_DIRECCION, direccion);
                 params.put(KEY_CORREO, correo);
                 params.put(KEY_PASS, pass);
